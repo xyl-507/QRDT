@@ -1,0 +1,127 @@
+META_ARC: "siamban_r50_l234_dwxcorr"
+
+BACKBONE:
+    TYPE: "resnet50"
+    KWARGS:
+        used_layers: [2, 3, 4]
+    PRETRAINED: 'pretrained_models/resnet50.model'
+    TRAIN_LAYERS: ['layer2', 'layer3', 'layer4']
+    TRAIN_EPOCH: 10
+    LAYERS_LR: 0.1
+
+ADJUST:
+    ADJUST: True
+    TYPE: "AdjustAllLayer"
+    LAYER: 0
+    FUSE: 'avg'
+    KWARGS:
+        in_channels: [512, 1024, 2048]
+        out_channels: [256, 256, 256]
+
+BAN:
+    BAN: True
+    TYPE: 'MultiBAN'
+    KWARGS:
+        in_channels: [256, 256, 256]
+        cls_out_channels: 2  # if use sigmoid cls, cls_out_channel = 1 else 2
+        weighted: True
+
+MASK:
+    MASK: False
+
+POINT:
+    STRIDE: 8
+
+TRAIN:
+    EPOCH: 20
+    START_EPOCH: 0 # 0 or resume checkpoint
+    BATCH_SIZE: 28
+    BASE_LR: 0.005
+    CLS_WEIGHT: 1.0
+    LOC_WEIGHT: 1.0
+    RESUME: '' # '' or 'snapshot/checkpoint_e.pth'
+
+    LR:
+        TYPE: 'log'
+        KWARGS:
+            start_lr: 0.005
+            end_lr: 0.00005
+    LR_WARMUP:
+        TYPE: 'step'
+        EPOCH: 5
+        KWARGS:
+            start_lr: 0.001
+            end_lr: 0.005
+            step: 1
+
+TRACK:
+    # matcher
+    TYPE: 'SiamBANTracker'
+#    WINDOW_INFLUENCE: 0.27892537574225806  # DTB70 - QRDT
+#    PENALTY_K: 0.02758449696976601  # DTB70
+#    LR: 0.6028840350449837  # DTB70
+#    WINDOW_INFLUENCE: 0.5821524343437052  # UAV20L
+#    PENALTY_K: 0.0003717192605172132  # UAV20L
+#    LR: 0.20287902372059763  # UAV20L
+    WINDOW_INFLUENCE: 0.5770525578626423  # UAVDT
+    PENALTY_K: 0.36397653105393646  # UAVDT
+    LR: 0.29678649961522496  # UAVDT
+#    WINDOW_INFLUENCE: 0.23438227698725614  # VisDrone2019-SOT-test-dev
+#    PENALTY_K: 0.288320795443629  # VisDrone2019-SOT-test-dev
+#    LR: 0.20121226678383733  # VisDrone2019-SOT-test-dev
+#    WINDOW_INFLUENCE: 0.13177297791115208  # HOB
+#    PENALTY_K: 0.16024165839941884  # HOB
+#    LR: 0.793808176688666  # HOB
+
+
+    CONFIDENCE_LOW: 0.8  # 0.8 mine; 0.85 dasiamrpn
+    EXEMPLAR_SIZE: 127
+    INSTANCE_SIZE: 255
+    BASE_SIZE: 8
+    CONTEXT_AMOUNT: 0.5
+
+    # classifier & updater
+    USE_CLASSIFIER: False  # True or False
+    TEMPLATE_UPDATE: True
+#    TEMPLATE_UPDATE: False
+    SEED: 12345
+    COEE_CLASS: 0.8
+    USE_ATTENTION_LAYER: True
+    CHANNEL_ATTENTION: True
+    SPATIAL_ATTENTION: 'pool' # ['none', 'conv', 'pool']
+    OPTIMIZER: 'GaussNewtonCG'  # ['GaussNewtonCG', 'GradientDescentL2', 'NewtonCG', 'GradientDescent']
+    TAU_REGRESSION: 0.6 # 使用模板库的回归阈值  0.6
+    TAU_CLASSIFICATION: 0.5  # 使用模板库的分类阈值 0.5
+    TARGET_UPDATE_THRESHOLD: 0.25  # 更新模板阈值 0.75
+    TARGET_UPDATE_SKIPPING: 5  # 更新模板周期  5
+
+    VISUALIZE_CLASS: False # test.py --vis !!
+    DEBUG_CLASS: False
+    ANALYZE_CONVERGENCE: False
+DATASET:
+    NAMES:
+    - 'VID'
+    - 'YOUTUBEBB'
+    - 'COCO'
+    - 'DET'
+    - 'GOT10K'
+#    - 'LASOT'
+
+    VIDEOS_PER_EPOCH: 800000
+
+    TEMPLATE:
+        SHIFT: 4
+        SCALE: 0.05
+        BLUR: 0.0
+        FLIP: 0.0
+        COLOR: 1.0
+
+    SEARCH:
+        SHIFT: 64
+        SCALE: 0.18
+        BLUR: 0.2
+        FLIP: 0.0
+        COLOR: 1.0
+
+    NEG: 0.2
+    GRAY: 0.0
