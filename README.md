@@ -8,6 +8,7 @@ Handling Occlusion in UAV Visual Tracking with Query-Guided Re-Detection
 The models and raw results can be downloaded from [BaiduYun](https://pan.baidu.com/s/10G2rx4--6vWgGCHjKhWpHw?pwd=1234). 
 
 The tracking demos are displayed on the [Bilibili](https://www.bilibili.com/video/BV1kN411n78y/) or [GitHub](https://github.com/xyl-507/QRDT/releases/tag/demo)
+
 The real-world tests are displayed on the [GitHub](https://github.com/xyl-507/QRDT/releases/tag/demos)
 
 ### UAV Tracking
