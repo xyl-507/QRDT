@@ -13,6 +13,13 @@ The tracking demos are displayed on the [Bilibili](https://www.bilibili.com/vide
 
 The real-world tests are displayed on the [GitHub](https://github.com/xyl-507/QRDT/releases/tag/demos)
 
+### Proposed modules
+- `query update (QU)` in [Tracker](https://github.com/xyl-507/QRDT/blob/master/siamban/tracker/siambanlt_tracker_template_KF.py)
+
+- `Cross Fusion Layer (CFL)` in [model](https://github.com/xyl-507/QRDT/blob/master/siamban/models/cam.py)
+  
+- `Trajectory prediction (TP)` in [Tracker](https://github.com/xyl-507/QRDT/blob/master/siamban/tracker/siambanlt_tracker_template_KF.py)
+
 ### UAV Tracking
 
 | Datasets | qrdt_r50_l234| 
