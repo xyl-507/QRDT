@@ -5,6 +5,9 @@ This is an official pytorch implementation of the 2024 IEEE Transactions on Inst
 Handling Occlusion in UAV Visual Tracking with Query-Guided Re-Detection
 (accepted by IEEE Transactions on Instrumentation and Measurement)
 ```
+
+![image](https://github.com/xyl-507/QRDT/blob/master/figs/fig.jpg)
+
 The paper can be downloaded from [IEEE Xplore]()
 
 The models and raw results can be downloaded from [BaiduYun](https://pan.baidu.com/s/10G2rx4--6vWgGCHjKhWpHw?pwd=1234). 
