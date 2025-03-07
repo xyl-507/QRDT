@@ -44,7 +44,7 @@ Please find installation instructions in [`INSTALL.md`](INSTALL.md).
 
 ## Quick Start: Using QRDT
 
-### Add SmallTrack to your PYTHONPATH
+### Add QRDT to your PYTHONPATH
 
 ```bash
 export PYTHONPATH=/path/to/qrdt:$PYTHONPATH
@@ -90,7 +90,8 @@ python ../../tools/eval.py 	 \
 
 ###  Training :wrench:
 
-See [TRAIN.md](TRAIN.md) for detailed instruction.
+- Training datasets and corresponding Json files are provided in [[Baidu Drive]](https://pan.baidu.com/s/1-20iGnDMT3ewtA2uNsGa6g?pwd=vrw4) for COCO, DET, GOT-10k, LaSOT, VID, YouTube-BoundingBoxes
+- See [TRAIN.md](TRAIN.md) for detailed instruction.
 
 
 ### Acknowledgement
