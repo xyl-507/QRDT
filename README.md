@@ -8,7 +8,7 @@ Handling Occlusion in UAV Visual Tracking with Query-Guided Re-Detection
 
 ![image](https://github.com/xyl-507/QRDT/blob/master/figs/fig.jpg)
 
-The paper can be downloaded from [IEEE Xplore](https://ieeexplore.ieee.org/document/10633268)
+The paper can be downloaded from [IEEE Xplore](https://ieeexplore.ieee.org/document/10633268) and [Researchgate](https://www.researchgate.net/publication/383010370_Handling_Occlusion_in_UAV_Visual_Tracking_with_Query-Guided_Redetection)
 
 The models and raw results can be downloaded from [BaiduYun](https://pan.baidu.com/s/10G2rx4--6vWgGCHjKhWpHw?pwd=1234). 
 
